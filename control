@@ -1,0 +1,9 @@
+Package: com.joemerlino.smartsleep
+Name: SmartSleep
+Depends: mobilesubstrate, libactivator
+Version: 1.0.2
+Architecture: iphoneos-arm
+Description: Asks you if you're awake after a set number of songs or minutes.
+Maintainer: Joe Merlino
+Author: Joe Merlino
+Section: Tweaks

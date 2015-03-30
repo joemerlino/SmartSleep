@@ -1,0 +1,10 @@
+{
+    entry = {
+	bundle = SmartSleep;
+	cell = PSLinkCell;
+	detail = SmartSleepListController;
+	icon = SmartSleep.png;
+	isController = 1;
+	label = SmartSleep;
+    };
+}
