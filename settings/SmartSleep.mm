@@ -99,7 +99,7 @@
 
 	-(void)donate {
 		// NSLog(@"CCP (PREF): HELP ME EAT !!!");
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.paypal.com/us/cgi-bin/webscr?cmd=_send-money&nav=1&email=merlino.giuseppe1@gmail.com"]];
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.paypal.com/sendmoney?email=merlino.giuseppe1@gmail.com"]];
 	}
 	-(void) sendEmail{
 		// NSLog(@"CCP (PREF): DISTRACT ME FROM MY WORK !!!");
