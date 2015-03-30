@@ -84,7 +84,6 @@
 	}
 
 	-(void)twitter {
-		// NSLog(@"CCP (PREF): SEE MY TWEETS !!!");
 		if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://user?screen_name=joe_merlino"]]) {
 			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"twitter://user?screen_name=joe_merlino"]];
 		} else {
@@ -93,20 +92,16 @@
 	}
 
 	-(void)my_site {
-		// NSLog(@"CCP (PREF): SEE MY WORK !!!");
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://github.com/joemerlino/"]];
 	}
 
 	-(void)donate {
-		// NSLog(@"CCP (PREF): HELP ME EAT !!!");
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.paypal.com/sendmoney?email=merlino.giuseppe1@gmail.com"]];
 	}
 	-(void) sendEmail{
-		// NSLog(@"CCP (PREF): DISTRACT ME FROM MY WORK !!!");
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:merlino.giuseppe1@gmail.com?subject=SmartSleep"]];
 	}
 	-(void)save{
-		// NSLog(@"CCP (PREF): NOW THATS GONNA DO SOMETHING NEW !!!");
 		[self.view endEditing:YES];
 	}
 @end

@@ -3,5 +3,6 @@ com.*
 _/*
 importantlog
 obj/*
+settings/obj/*
 .theos/*
 log.xm

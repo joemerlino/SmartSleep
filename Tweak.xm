@@ -50,7 +50,7 @@ NSString *limite  =@"";
 					}
 					if(![alrt boolValue]){
 						conta++;
-						NSLog(@"CCP: WE GOT A NEW TITLE %@ and %d",nowPlayingTitle, conta);
+						NSLog(@"WE GOT A NEW TITLE %@ and %d",nowPlayingTitle, conta);
 						[nowPlayingTitle_tmp release];
 						[nowPlayingTitle retain];
 					}
@@ -74,36 +74,37 @@ NSString *limite  =@"";
 
 -(void)setNowPlayingInfo:(id)arg1 {
 	%orig;
-	if([alrt boolValue] && awake){
-		awake=NO;
-		NSLog(@"LIMITE IN MINUTI");
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (arrivo*60) * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-		    [((SBMediaController *)[%c(SBMediaController) sharedInstance]) pause];
+	if([frmt boolValue]){
+		if([alrt boolValue] && awake){
+			awake=NO;
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (arrivo*60) * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+			    [((SBMediaController *)[%c(SBMediaController) sharedInstance]) pause];
+				UIAlertView *credits = [[UIAlertView alloc] initWithTitle:@"SmartSleep" 
+						          message:@"Are you awake?" 
+	                                                 delegate:self 
+	  					cancelButtonTitle:@"Yes" 
+	  					otherButtonTitles:nil]; 
+				[credits show];
+				[credits release];
+				dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+				    [credits dismissWithClickedButtonIndex:-1 animated:YES];
+				});
+			});
+		}
+		if(conta==arrivo){
+			conta=1;
+			[((SBMediaController *)[%c(SBMediaController) sharedInstance]) pause];
 			UIAlertView *credits = [[UIAlertView alloc] initWithTitle:@"SmartSleep" 
-					          message:@"Are you awake?" 
-                                                 delegate:self 
-  					cancelButtonTitle:@"Yes" 
-  					otherButtonTitles:nil]; 
+						          message:@"Are you awake?" 
+	                                                 delegate:self 
+	  					cancelButtonTitle:@"Yes" 
+	  					otherButtonTitles:nil]; 
 			[credits show];
 			[credits release];
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-			    [credits dismissWithClickedButtonIndex:-1 animated:YES];
+				    [credits dismissWithClickedButtonIndex:-1 animated:YES];
 			});
-		});
-	}
-	if(conta==arrivo){
-		conta=1;
-		[((SBMediaController *)[%c(SBMediaController) sharedInstance]) pause];
-		UIAlertView *credits = [[UIAlertView alloc] initWithTitle:@"SmartSleep" 
-					          message:@"Are you awake?" 
-                                                 delegate:self 
-  					cancelButtonTitle:@"Yes" 
-  					otherButtonTitles:nil]; 
-		[credits show];
-		[credits release];
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-			    [credits dismissWithClickedButtonIndex:-1 animated:YES];
-		});
+		}
 	}
 }
 
